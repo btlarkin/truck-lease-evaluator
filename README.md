@@ -103,6 +103,64 @@ by **eleven cents.**
 **Haggling over the payment is not the lever.** The deal lives or dies on whether loads in your
 lanes actually clear ~$2.20/mile. And you don't control that.
 
+## The companion tool: `rate_journal.py`
+
+The evaluator needs four numbers it cannot invent for you — what your lanes pay, how much
+that swings, **how wrong your estimate might be**, and how many miles you actually turn.
+
+`rate_journal.py` computes them from real observations, and tells you **when you have enough
+data to trust the answer.**
+
+```bash
+python rate_journal.py how          # how to legitimately get rate data. START HERE.
+
+python rate_journal.py log --date 2026-07-08 --origin "Dallas TX" --dest "Atlanta GA" \
+    --loaded-miles 780 --deadhead-miles 65 --rate 1850
+
+python rate_journal.py import-csv dat_export.csv    # or import a load-board export
+python rate_journal.py stats
+python rate_journal.py emit --deal deal.json        # writes straight into the lease model
+```
+
+### The thing nobody does: ask how wrong the average is
+
+Everyone eyeballs an average. Almost nobody asks how *wrong* it could be.
+
+```
+  HOW WRONG COULD YOU BE?
+  ----------------------------------------------------------------------
+    Std error of the mean              $     0.07 /mi
+    95% confidence interval             $2.01 .. $2.42
+    Interval WIDTH                     $     0.42 /mi
+
+    [!] Your average could be off by $0.21/mi in either
+        direction. On 2,200 loaded miles a week that is
+        $23,915 a year of pure uncertainty.
+        YOU DO NOT HAVE AN ANSWER YET.
+
+    Weeks needed to pin the mean within +/- $0.10/mi:    10
+    Weeks needed to pin the mean within +/- $0.05/mi:    29
+```
+
+**Four weeks of data is not a sample. It is an anecdote.** After a month your estimate of your
+own average rate can still be off by twenty cents a mile — and twenty cents is the difference
+between a deal that beats your job and a deal that ends you.
+
+The standard error of the mean is `sigma / sqrt(n)`. It shrinks slowly. **That is not a flaw in
+the tool; it is a fact about small samples, and it is why so many drivers sign on a hunch.**
+
+### It will not scrape load boards
+
+DAT and Truckstop are paid, authenticated services whose terms prohibit it, and there is no free
+public load-board API. `python rate_journal.py how` lays out the legitimate paths — including
+the one that costs nothing and matters most:
+
+> **"Show me the last 12 weeks of settlement statements from three drivers currently in this
+> lease program."**
+>
+> A legitimate program will show you. A predatory one will deflect.
+> **The deflection is the answer.**
+
 ## Install
 
 ```bash

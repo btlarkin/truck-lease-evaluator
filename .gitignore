@@ -7,3 +7,6 @@ __pycache__/
 .venv/
 venv/
 .pytest_cache/
+
+# Your own logged loads — local data, not for the repo
+rate_journal.jsonl
