@@ -1,0 +1,9 @@
+# YOUR CONTRACT TERMS. Never commit a real deal.
+deal.json
+*.deal.json
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
