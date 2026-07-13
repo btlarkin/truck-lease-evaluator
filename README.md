@@ -37,8 +37,8 @@ This tool prices the tail.
 
   WHAT YOU ACTUALLY NEED (solved, not guessed)
   ----------------------------------------------------------------------
-    Rate to merely MATCH the W2 seat   $    2.21 /loaded mi
-    Miles/wk to match at assumed rate      2,398 loaded mi
+    Rate to merely MATCH the W2 seat   $    2.24 /loaded mi
+    Miles/wk to match at assumed rate      2,445 loaded mi
 
     Below these lines you are paying for the privilege of taking risk.
 ```
@@ -46,8 +46,8 @@ This tool prices the tail.
 | | Rate | What it means |
 |---|---|---|
 | Break-even | **$1.43/mi** | You stop **losing** money |
-| Match your W2 | **$2.21/mi** | You stop **working for free** |
-| The gap | **$0.78/mi** | What your labor is already worth |
+| Match your W2 | **$2.24/mi** | You stop **working for free** |
+| The gap | **$0.81/mi** | What your labor is already worth |
 
 At $2.10/mi you'd take on the payment, the maintenance, the downtime, the escrow, and 100% of
 the risk — **to earn less than the company job you already have.**
@@ -89,16 +89,16 @@ That is not a forecast. It is a property of the deal's structure, and it is true
 
 Sweeping the required rate across every plausible lease payment:
 
-| Lease payment | Break-even | Rate to match your W2 |
-|---|---|---|
-| $450/wk | $1.34 | $2.10 |
-| $650/wk | $1.43 | **$2.21** |
-| $850/wk | $1.53 | $2.31 |
+| Lease payment | Break-even | Rate to match your W2 | Gap |
+|---|---|---|---|
+| $450/wk | $1.34 | $2.13 | $0.79 |
+| $650/wk | $1.43 | **$2.23** | $0.80 |
+| $850/wk | $1.53 | $2.34 | $0.81 |
 
-**The gap stays at ~$0.78/mi no matter what the payment is.**
+**The gap stays at ~$0.80/mi no matter what the payment is.**
 
 Negotiating $650 down to $450 — a 30% cut, real money, hard to win — moves your required rate
-by **eleven cents.**
+by **ten cents.**
 
 **Haggling over the payment is not the lever.** The deal lives or dies on whether loads in your
 lanes actually clear ~$2.20/mile. And you don't control that.
