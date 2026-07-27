@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truck Lease Evaluator — is this lease-purchase better than your job?</title>
+<meta name="description" content="A free tool that works out whether a truck lease-purchase actually beats the company job you already have. The payment is fixed every week. Your revenue is not. Nobody goes broke on an average week.">
+
+<!-- ============================================================
+     PLACEHOLDER — the canonical hostname is not chosen yet.
+     Find/replace CHOOSE-ONE.waybilldata.com everywhere in this
+     file AND in docs/CNAME. See docs/README.md.
+     ============================================================ -->
+<link rel="canonical" href="https://CHOOSE-ONE.waybilldata.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Waybill Data Systems">
+<meta property="og:title" content="Truck Lease Evaluator">
+<meta property="og:description" content="The payment is fixed. Your revenue is not. A free tool that works out whether a lease-purchase really beats the job you already have.">
+<meta property="og:url" content="https://CHOOSE-ONE.waybilldata.com/">
+<meta property="og:image" content="https://CHOOSE-ONE.waybilldata.com/assets/og-1200x630.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Waybill Data Systems">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Truck Lease Evaluator">
+<meta name="twitter:description" content="The payment is fixed. Your revenue is not. A free tool that works out whether a lease-purchase really beats the job you already have.">
+<meta name="twitter:image" content="https://CHOOSE-ONE.waybilldata.com/assets/og-1200x630.png">
+
+<meta name="theme-color" content="#F4F1EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101418" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon-180.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-head">
+  <a class="brand" href="https://waybilldata.com">
+    <picture>
+      <source srcset="assets/waybill-wordmark-white.svg" media="(prefers-color-scheme: dark)">
+      <img src="assets/waybill-wordmark.svg" alt="Waybill Data Systems" width="120" height="28">
+    </picture>
+  </a>
+</header>
+
+<main id="main">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <p class="eyebrow">Free · open source · runs on your own machine</p>
+    <h1>A lease&#8209;purchase is a bet. This tool prices the bet.</h1>
+
+    <p class="lede">A recruiter will show you this:</p>
+
+    <blockquote class="quote-recruiter">
+      <p>&ldquo;Break-even is $1.43 a mile and loads are running $2.10. You&rsquo;re clearing sixty-seven cents a mile. Sign here.&rdquo;</p>
+    </blockquote>
+
+    <p class="kicker">That is true. It is also the wrong math, and it is how drivers lose everything.</p>
+
+    <p>I&rsquo;m a CDL driver. I have never signed a lease-purchase &mdash; I ran the numbers on the offers I&rsquo;ve seen and decided against it. This is the tool I ran them with. It&rsquo;s free, it&rsquo;s yours, and it doesn&rsquo;t want anything from you.</p>
+
+    <p class="cta-row"><a class="cta-inline" href="#worksheet">Get the worksheet &rarr;</a></p>
+  </section>
+
+  <!-- ===================== THE PROBLEM ===================== -->
+  <section aria-labelledby="h-problem">
+    <h2 id="h-problem">The problem</h2>
+
+    <p>The deal only runs one way:</p>
+
+    <ul class="tight">
+      <li>The payment is <strong>fixed</strong>. It hits every Friday whether the truck moved or not.</li>
+      <li>Your revenue is <strong>not</strong>. It goes to zero during breakdowns, home time, and slow weeks.</li>
+    </ul>
+
+    <p>Cost-per-mile math &mdash; the only math most drivers are ever shown &mdash; gives you an average week. It says nothing about your bad weeks.</p>
+
+    <p class="pull">Nobody goes broke on an average week.</p>
+
+    <p>They go broke when a $9,000 engine repair lands in the same month as soft rates &mdash; and the payment is still due Friday.</p>
+
+    <p><strong>This tool prices the bad weeks.</strong></p>
+  </section>
+
+  <!-- ===================== THE TWO NUMBERS ===================== -->
+  <section aria-labelledby="h-numbers">
+    <h2 id="h-numbers">The two numbers that matter</h2>
+
+    <p class="note">The figures below are the tool&rsquo;s example numbers. They are made up, not anyone&rsquo;s real contract. Yours will be different &mdash; that is the whole point.</p>
+
+    <ul class="figures" role="list">
+      <li>
+        <p class="fig-label">Break-even</p>
+        <p class="fig-value">$1.43<span class="fig-unit">/mi</span></p>
+        <p class="fig-note">You stop <strong>losing</strong> money.</p>
+      </li>
+      <li>
+        <p class="fig-label">Match your W2</p>
+        <p class="fig-value">$2.24<span class="fig-unit">/mi</span></p>
+        <p class="fig-note">You stop <strong>working for free</strong>.</p>
+      </li>
+      <li class="fig-accent">
+        <p class="fig-label">The gap</p>
+        <p class="fig-value">$0.81<span class="fig-unit">/mi</span></p>
+        <p class="fig-note">What your labor is already worth.</p>
+      </li>
+    </ul>
+
+    <p>At $2.10/mi you&rsquo;d take on the payment, the repairs, the downtime, the escrow, and all of the risk &mdash; <strong>to earn less than the company job you already have.</strong></p>
+
+    <p>The fixed cost is due <strong>every week</strong>, even at zero miles. On these example terms that is <strong>$1,202 a week</strong> with the truck parked.</p>
+  </section>
+
+  <!-- ===================== WHICH NUMBERS DECIDE ===================== -->
+  <section aria-labelledby="h-tornado">
+    <h2 id="h-tornado">Which numbers actually decide this</h2>
+
+    <p>Every input, ranked by how much it moves the outcome. <span class="tag tag-you">YOU</span> means you can influence it. <span class="tag tag-mkt">MKT</span> means the market decides, not you.</p>
+
+    <ul class="tornado" role="list">
+      <li>
+        <span class="t-name">Rate $/mi</span>
+        <span class="t-val">$55,784</span>
+        <span class="tag tag-mkt">MKT</span>
+        <span class="t-bar" aria-hidden="true"><span class="t-fill t-mkt" style="width:100%"></span></span>
+      </li>
+      <li>
+        <span class="t-name">Loaded miles/wk</span>
+        <span class="t-val">$39,566</span>
+        <span class="tag tag-you">YOU</span>
+        <span class="t-bar" aria-hidden="true"><span class="t-fill t-you" style="width:71%"></span></span>
+      </li>
+      <li>
+        <span class="t-name">W2 take-home $/wk</span>
+        <span class="t-val">$23,400</span>
+        <span class="tag tag-mkt">MKT</span>
+        <span class="t-bar" aria-hidden="true"><span class="t-fill t-mkt" style="width:42%"></span></span>
+      </li>
+      <li>
+        <span class="t-name">Fuel $/gal</span>
+        <span class="t-val">$21,984</span>
+        <span class="tag tag-mkt">MKT</span>
+        <span class="t-bar" aria-hidden="true"><span class="t-fill t-mkt" style="width:39%"></span></span>
+      </li>
+      <li>
+        <span class="t-name">MPG</span>
+        <span class="t-val">$15,405</span>
+        <span class="tag tag-you">YOU</span>
+        <span class="t-bar" aria-hidden="true"><span class="t-fill t-you" style="width:28%"></span></span>
+      </li>
+      <li>
+        <span class="t-name">Deadhead %</span>
+        <span class="t-val">$14,523</span>
+        <span class="tag tag-you">YOU</span>
+        <span class="t-bar" aria-hidden="true"><span class="t-fill t-you" style="width:26%"></span></span>
+      </li>
+      <li>
+        <span class="t-name">Maintenance $/mi</span>
+        <span class="t-val">$14,331</span>
+        <span class="tag tag-mkt">MKT</span>
+        <span class="t-bar" aria-hidden="true"><span class="t-fill t-mkt" style="width:26%"></span></span>
+      </li>
+      <li>
+        <span class="t-name">Lease payment $/wk</span>
+        <span class="t-val">$13,000</span>
+        <span class="tag tag-you">YOU</span>
+        <span class="t-bar" aria-hidden="true"><span class="t-fill t-you" style="width:23%"></span></span>
+      </li>
+      <li>
+        <span class="t-name">Breakdown prob/wk</span>
+        <span class="t-val">$12,407</span>
+        <span class="tag tag-mkt">MKT</span>
+        <span class="t-bar" aria-hidden="true"><span class="t-fill t-mkt" style="width:22%"></span></span>
+      </li>
+    </ul>
+
+    <p class="pull">61% of the outcome sits in things you do not control.</p>
+
+    <p><strong>Read that last line again.</strong> You&rsquo;d be borrowing serious money against one truck you can&rsquo;t sell quickly &mdash; and 61% of how it turns out is decided by things that don&rsquo;t care how hard you work.</p>
+
+    <p>That is not a guess about this year. It is how the deal is built, and it is true in any market.</p>
+  </section>
+
+  <!-- ===================== THE FINDING ===================== -->
+  <section aria-labelledby="h-finding">
+    <h2 id="h-finding">The payment is not the lever</h2>
+
+    <p>Run the rate you&rsquo;d need against every payment a recruiter might offer:</p>
+
+    <div class="table-scroll">
+      <table>
+        <caption>Example numbers. The gap barely moves.</caption>
+        <thead>
+          <tr>
+            <th scope="col">Lease payment</th>
+            <th scope="col">Break-even</th>
+            <th scope="col">Match your W2</th>
+            <th scope="col">Gap</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">$450/wk</th><td>$1.34</td><td>$2.13</td><td>$0.79</td></tr>
+          <tr><th scope="row">$650/wk</th><td>$1.43</td><td>$2.24</td><td>$0.81</td></tr>
+          <tr><th scope="row">$850/wk</th><td>$1.53</td><td>$2.34</td><td>$0.81</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>The gap stays near $0.80/mi no matter what the payment is.</strong></p>
+
+    <p>Talking $650 down to $450 &mdash; a 30% cut, real money, hard to win &mdash; moves the rate you need by <strong>ten cents.</strong></p>
+
+    <p>The deal lives or dies on whether loads in <em>your</em> lanes really pay about $2.20 a mile. And you don&rsquo;t set that.</p>
+  </section>
+
+  <!-- ===================== WHAT IT WILL NOT DO ===================== -->
+  <section aria-labelledby="h-not">
+    <h2 id="h-not">What this tool will <em>not</em> do</h2>
+
+    <p class="kicker">It will not tell you whether to sign. Anything that claims it can is lying to you.</p>
+
+    <p>Feed it two sets of numbers that both look reasonable and it returns <strong>&minus;$7,798</strong> on one and <strong>+$97,401</strong> on the other. A $105,000 swing, from nothing but what you typed in.</p>
+
+    <p>Its real job is to show you <strong>which numbers decide your life</strong>, so you can go get the true ones instead of trusting someone else&rsquo;s math.</p>
+
+    <p>It also will not scrape load boards. DAT and Truckstop cost money, need a login, and their terms say don&rsquo;t. The tool lays out the legal ways instead &mdash; including the one that costs nothing and matters most:</p>
+
+    <blockquote class="quote-ask">
+      <p>&ldquo;Show me the last 12 weeks of settlement statements from three drivers currently in this lease program.&rdquo;</p>
+      <p class="q-after">An honest program will show you. A predatory one changes the subject. <strong>The dodge is your answer.</strong></p>
+    </blockquote>
+  </section>
+
+  <!-- ===================== RED FLAGS ===================== -->
+  <section aria-labelledby="h-flags">
+    <h2 id="h-flags">Red flags it will catch</h2>
+    <ul class="flags">
+      <li>An interest rate that&rsquo;s predatory once you unmask it &mdash; a lease is a loan in a costume, and running the real payments against what the truck is worth shows the rate the paperwork avoids printing</li>
+      <li>Total cost far above what the truck is actually worth</li>
+      <li><strong>Escrow you never get back</strong> &mdash; their money now, sold to you as your savings</li>
+      <li>A balloon payment at the end that&rsquo;s too big to handle</li>
+      <li>Exit penalties that trap you in</li>
+      <li>Savings too thin to survive one engine failure</li>
+    </ul>
+    <p>Those come straight off the <strong>paperwork</strong>, not off any guess about freight rates. They are the only part of this that is fact instead of forecast.</p>
+  </section>
+
+  <!-- ===================== THE ONE QUESTION ===================== -->
+  <section aria-labelledby="h-question">
+    <h2 id="h-question">The one question this replaces</h2>
+
+    <p>You don&rsquo;t have to agonize. You have to answer one question:</p>
+
+    <p class="pull pull-question">Do loads in my lanes clear $2.20+ a mile, consistently, after deadhead?</p>
+
+    <p>If yes, the truck is worth a serious look. If no, you already have the better job.</p>
+
+    <p><strong>Go pull thirty days of real load-board data for the lanes you&rsquo;d actually run.</strong> Not the national average. Not the recruiter&rsquo;s number. Yours.</p>
+  </section>
+
+  <!-- ===================== THE WORKSHEET ===================== -->
+  <section id="worksheet" aria-labelledby="h-worksheet">
+    <h2 id="h-worksheet">The worksheet</h2>
+
+    <p>Before you can model anything, you have to go collect the numbers. Here is the whole list. <strong>You do not need the tool, a computer, or an email address to use it</strong> &mdash; print this page, or copy it onto paper, and go ask.</p>
+
+    <p class="honest">Every line is a question someone has to answer <strong>in writing</strong>. A straight program answers them. Watch what happens when you ask.</p>
+
+    <div class="ws">
+      <h3>From the contract</h3>
+      <p class="ws-note">They must give you these in writing.</p>
+      <ul class="ws-list" role="list">
+        <li>Weekly payment</li>
+        <li>Term, in weeks</li>
+        <li>Down payment / first-and-last</li>
+        <li>Balloon / purchase option at the end</li>
+        <li>Weekly maintenance escrow</li>
+        <li>Is the escrow <strong>refundable</strong> if you walk? <span class="ws-flag">Ask twice. Get it in writing.</span></li>
+        <li>Early termination penalty</li>
+        <li>Is the payment reduced during downtime? <span class="ws-flag">Almost always no. That is the trap.</span></li>
+        <li>Who pays for a major engine event?</li>
+        <li>Forced dispatch, or can you refuse loads?</li>
+        <li>What happens if you miss <strong>one</strong> payment?</li>
+      </ul>
+
+      <h3>The number they will not volunteer</h3>
+      <ul class="ws-list" role="list">
+        <li>The truck&rsquo;s actual fair market value
+          <span class="ws-flag">Get this from a <strong>third party</strong> &mdash; look up the year, make, model and mileage on TruckPaper, or ask a dealer who is not selling you this truck. If the all-in cost is 75% or more above that value, the financing is the product, not the truck.</span></li>
+      </ul>
+
+      <h3>From the market</h3>
+      <p class="ws-note">Not from the recruiter.</p>
+      <ul class="ws-list" role="list">
+        <li>Real average $/loaded mile in <strong>your</strong> lanes
+          <span class="ws-flag">Pull 30 days of real postings on a load board. Do not use their number.</span></li>
+        <li>How much that rate swings week to week, in dollars per mile</li>
+        <li>How wrong your average might be, in dollars per mile <span class="ws-flag">Not how much the rate moves &mdash; how far off <em>your own estimate of the average</em> could be.</span></li>
+        <li>Realistic loaded miles per week</li>
+        <li>Realistic deadhead percentage</li>
+      </ul>
+
+      <h3>From your own life</h3>
+      <p class="ws-note">You already know these.</p>
+      <ul class="ws-list" role="list">
+        <li>Current W2 weekly take-home, after tax <span class="ws-flag">This is the benchmark. Everything is measured against it.</span></li>
+        <li>Cash reserve you can actually afford to lose</li>
+        <li>Home time weeks per year</li>
+      </ul>
+
+      <h3>From reality</h3>
+      <p class="ws-note">Be honest here or the model lies to you.</p>
+      <ul class="ws-list" role="list">
+        <li>Truck mileage at signing</li>
+        <li>Realistic maintenance money per mile <span class="ws-flag">$0.12&ndash;0.20 on a used truck.</span></li>
+        <li>Odds of a breakdown in any given week</li>
+        <li>Typical repair bill</li>
+        <li>Weeks of downtime when it happens</li>
+      </ul>
+    </div>
+
+    <p class="honest"><strong>There is no email to give.</strong> Nothing on this page asks for one. If you want the same list as a printable text file, the tool prints it &mdash; <code>python worksheet.py</code>, no installing anything. If you never touch the tool at all, the list above is still the whole of it.</p>
+  </section>
+
+  <!-- ===================== GET THE TOOL ===================== -->
+  <section aria-labelledby="h-tool">
+    <h2 id="h-tool">Get the tool</h2>
+
+    <p>The worksheet above needs nothing installed. The model itself needs Python 3.10+ and two libraries. MIT licensed. No cloud, no account, no tracking, nothing phones home. <strong>Your contract terms never leave your machine.</strong></p>
+
+    <div class="code-scroll">
+<pre><code>git clone https://github.com/btlarkin/truck-lease-evaluator
+cd truck-lease-evaluator
+
+python worksheet.py                 # the checklist above. Nothing to install.
+
+pip install -r requirements.txt     # only needed for the model itself
+python lease_evaluator.py --dump-template &gt; deal.json
+#   ... edit deal.json with your REAL numbers ...
+python lease_evaluator.py --scenario deal.json --all</code></pre>
+    </div>
+
+    <p class="cta-row"><a class="cta-inline" href="https://github.com/btlarkin/truck-lease-evaluator">Source and full documentation on GitHub &rarr;</a></p>
+
+    <p class="note">Every number the model prints is checked against an answer worked out by hand. Turn the randomness off and the simulation has to land exactly on the plain-math result; a truck that never moves has to bleed <em>exactly</em> the fixed cost. A model you&rsquo;d use to make a six-figure decision you can&rsquo;t undo, with no tests behind it, is malpractice.</p>
+  </section>
+
+  <!-- ===================== DISCLAIMER ===================== -->
+  <section class="disclaimer" aria-labelledby="h-disclaimer">
+    <h2 id="h-disclaimer">Disclaimer</h2>
+    <p>This is a modeling tool. <strong>It is not financial, legal, or tax advice.</strong> Its output is only as good as the numbers you feed it, and it is built to make that impossible to ignore.</p>
+    <p>Nothing here is a recommendation to sign or avoid any contract. Talk to professionals who owe you a duty of care. Read your contract. Twice.</p>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <a class="brand-foot" href="https://waybilldata.com">
+    <picture>
+      <source srcset="assets/waybill-lockup-horizontal-white.svg" media="(prefers-color-scheme: dark)">
+      <img src="assets/waybill-lockup-horizontal.svg" alt="Waybill Data Systems" width="160" height="36" loading="lazy">
+    </picture>
+  </a>
+  <p>Freight paperwork turned into structured data, on your own machine.</p>
+  <p class="foot-links">
+    <a href="https://waybilldata.com">waybilldata.com</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/btlarkin/truck-lease-evaluator">Source</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/btlarkin/truck-lease-evaluator/blob/main/LICENSE">MIT</a>
+  </p>
+</footer>
+
+</body>
+</html>
