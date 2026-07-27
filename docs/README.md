@@ -31,23 +31,29 @@ The `-white` variants are served to dark-mode viewers via
 
 ---
 
-## ☤ One placeholder you must replace before shipping
+## ☤ The hostname is chosen: `lease.waybilldata.com`
 
-Deliberately loud so it cannot ship unnoticed.
+Option A below was taken. `CNAME` holds `lease.waybilldata.com`, and `index.html` uses it for
+`<link rel=canonical>`, `og:url`, `og:image` and `twitter:image`. The loud placeholder that used
+to sit in `<head>` is gone because it has been resolved.
 
-### `CHOOSE-ONE.waybilldata.com` — the hostname
+**The DNS record is not in this repo and never can be.** At the registrar holding
+`waybilldata.com` (Hostinger, as of 2026-07-27):
 
-Five occurrences in `index.html` (`<link rel=canonical>`, `og:url`, `og:image`,
-`twitter:image`, and the warning comment in `<head>`) plus the single line in `CNAME`.
-One find/replace fixes all of them:
+| Type | Name | Value |
+|---|---|---|
+| `CNAME` | `lease` | `btlarkin.github.io.` |
+
+Until that record exists and propagates, GitHub Pages serves a 404 at the custom domain **and
+redirects the `github.io` URL to it**, so the site is unreachable at both addresses. That is
+expected, not a broken build. Check with:
 
 ```bash
-grep -rl 'CHOOSE-ONE.waybilldata.com' docs/ | xargs sed -i 's|CHOOSE-ONE\.waybilldata\.com|YOUR-REAL-HOST|g'
+dig +short lease.waybilldata.com CNAME     # want: btlarkin.github.io.
 ```
 
-As shipped, `CNAME` contains an intentionally invalid hostname. GitHub Pages will **visibly
-fail** to verify it rather than silently serve the wrong domain. That is the intended
-behaviour of the placeholder.
+Enforce HTTPS cannot be ticked until the certificate is issued, which cannot happen until DNS
+resolves. Order matters: DNS first, then HTTPS.
 
 ---
 
