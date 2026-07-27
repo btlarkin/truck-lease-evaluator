@@ -13,7 +13,9 @@ Run:
 
 from __future__ import annotations
 
+import json
 import unittest
+from pathlib import Path
 
 from pydantic import ValidationError
 
@@ -531,6 +533,53 @@ class TestVerdictAndReporting(unittest.TestCase):
         self.assertEqual(main(["--worksheet"]), 0)
         self.assertEqual(main(["--dump-template"]), 0)
         self.assertEqual(main(["--paths", "500"]), 0)
+
+
+class TestPublishedScenarios(unittest.TestCase):
+    """The README claims the model refuses to decide: two equally plausible
+    input sets swing the answer by six figures. That claim is only honest if
+    a reader can reproduce it, so the two input sets ship in scenarios/ and
+    this test holds them to what the README says about them.
+
+    Both files carry IDENTICAL lease terms. Only the guesses differ — rate,
+    miles, deadhead, fuel, mpg, maintenance, breakdown odds. That is the
+    point: the paper is fixed and the estimates still decide the outcome.
+    """
+
+    DIR = Path(__file__).parent / "scenarios"
+
+    def _load(self, name: str) -> Scenario:
+        return Scenario.model_validate_json((self.DIR / f"{name}.json").read_text())
+
+    def test_both_scenarios_parse(self):
+        for name in ("soft-market", "strong-lanes"):
+            self.assertIsInstance(self._load(name), Scenario)
+
+    def test_lease_terms_are_identical(self):
+        soft = json.loads((self.DIR / "soft-market.json").read_text())
+        strong = json.loads((self.DIR / "strong-lanes.json").read_text())
+        self.assertEqual(
+            soft["lease"], strong["lease"],
+            "The two scenarios must differ ONLY in the numbers a driver guesses at. "
+            "If the lease terms drift apart the README's claim stops being true.",
+        )
+        self.assertEqual(soft["alternative"], strong["alternative"])
+
+    def test_the_swing_is_at_least_six_figures(self):
+        # Default seed and default --paths on purpose: this must reproduce exactly
+        # what a reader sees running the command the README publishes.
+        soft = LeaseEvaluator(self._load("soft-market")).simulate(n_paths=20_000)
+        strong = LeaseEvaluator(self._load("strong-lanes")).simulate(n_paths=20_000)
+
+        self.assertLess(soft.median_edge, 0.0, "soft-market must lose money")
+        self.assertGreater(strong.median_edge, 0.0, "strong-lanes must beat the W2")
+
+        swing = strong.median_edge - soft.median_edge
+        self.assertGreater(
+            swing, 100_000.0,
+            f"README claims a six-figure swing; got ${swing:,.0f}. "
+            "Update the README or the scenarios — do not leave them disagreeing.",
+        )
 
 
 if __name__ == "__main__":

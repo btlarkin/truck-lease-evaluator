@@ -55,6 +55,61 @@ dig +short lease.waybilldata.com CNAME     # want: btlarkin.github.io.
 Enforce HTTPS cannot be ticked until the certificate is issued, which cannot happen until DNS
 resolves. Order matters: DNS first, then HTTPS.
 
+### Adding the record in Hostinger hPanel
+
+**Domain portfolio → `waybilldata.com` → DNS / Nameservers → DNS records.**
+
+First confirm the **Nameservers** panel shows Hostinger's own (`horizon.dns-parking.com` /
+`orbit.dns-parking.com`). If they point elsewhere, this editor is cosmetic — the zone being
+served is somewhere else and the record will do nothing.
+
+Then, in **Manage DNS records**, fill the Add Record row:
+
+| Field | Value |
+|---|---|
+| Type | `CNAME` |
+| Name | `lease` |
+| Value | `btlarkin.github.io` |
+| TTL | `300` (the form defaults to `14400`) |
+
+Press **Add Record**.
+
+Four things that catch people:
+
+- **Name takes the label only.** Type `lease`, not `lease.waybilldata.com` — hPanel appends
+  the domain and you would get `lease.waybilldata.com.waybilldata.com`.
+- **No trailing dot in Value.** hPanel normalises it; every other record in the zone is
+  stored without one.
+- **TTL 300 while testing.** A mistake then costs five minutes instead of four hours. Raise
+  it once the site is confirmed live.
+- **Never press "Reset DNS records."** It restores zone defaults and destroys the MX, SPF,
+  DKIM and DMARC records that make domain email work.
+
+This record is **independent of the apex.** `waybilldata.com` needs no A record for
+`lease.waybilldata.com` to resolve — which is the whole point of Option A. The evaluator can
+ship before the main site exists.
+
+Mail records (`MX`, `TXT` at `@`, `*._domainkey`, `autodiscover`, `autoconfig`) all live at the
+apex or on their own labels. **A `lease` CNAME cannot disturb them.**
+
+### Verifying — and why your own machine may lie
+
+`dig` is not installed on every box, and captive-portal wifi (hotel, truck stop, AT&T
+tethering) commonly hijacks failed lookups to the local gateway — so a hostname that does not
+exist appears to resolve, and a `curl` returns a portal's `302` that looks like a real answer.
+**Verify over cellular, or from a resolver you do not control:**
+
+```bash
+dig +short lease.waybilldata.com CNAME        # want: btlarkin.github.io.
+dig @1.1.1.1 +short lease.waybilldata.com     # bypass the local resolver
+python3 -c "import socket;print(socket.gethostbyname_ex('lease.waybilldata.com'))"
+```
+
+If the answer comes back as a `192.168.x.x` address or a hostname ending in something like
+`.attwifi.manager`, that is the portal talking, not DNS. Use https://dnschecker.org instead.
+
+Propagation is typically 15 minutes to a few hours; Hostinger quotes up to 24.
+
 ---
 
 ## ☤ Choosing the hostname
