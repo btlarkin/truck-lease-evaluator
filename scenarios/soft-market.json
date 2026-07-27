@@ -1,0 +1,44 @@
+{
+  "label": "Same contract, soft market (ILLUSTRATIVE - inputs are plausible guesses)",
+  "lease": {
+    "weekly_payment": 650.0,
+    "term_weeks": 208,
+    "down_payment": 5000.0,
+    "balloon_payment": 18000.0,
+    "truck_fair_market_value": 65000.0,
+    "maintenance_escrow_weekly": 150.0,
+    "escrow_refundable": false,
+    "early_termination_penalty": 0.0
+  },
+  "costs": {
+    "fuel_price_per_gal": 4.1,
+    "mpg": 6.2,
+    "maintenance_reserve_per_mile": 0.18,
+    "insurance_weekly": 250.0,
+    "eld_and_software_weekly": 35.0,
+    "tolls_parking_weekly": 75.0,
+    "plates_permits_annual": 2200.0,
+    "factoring_pct": 0.03,
+    "dispatch_fee_pct": 0.0
+  },
+  "revenue": {
+    "avg_rate_per_mile": 2.0,
+    "rate_volatility": 0.35,
+    "rate_mean_uncertainty": 0.18,
+    "loaded_miles_per_week": 2000.0,
+    "miles_volatility": 450.0,
+    "deadhead_pct": 0.15,
+    "home_time_weeks_per_year": 4.0
+  },
+  "risk": {
+    "breakdown_prob_per_week": 0.04,
+    "avg_breakdown_cost": 3500.0,
+    "breakdown_cost_volatility": 2500.0,
+    "avg_downtime_weeks": 1.0,
+    "starting_cash_reserve": 10000.0
+  },
+  "alternative": {
+    "w2_weekly_takehome": 1250.0,
+    "w2_weekly_volatility": 150.0
+  }
+}

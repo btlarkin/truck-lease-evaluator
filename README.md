@@ -55,8 +55,16 @@ risk — **to earn less than the company job you already have.**
 
 **It will not tell you whether to sign.** Anything that claims it can is lying to you.
 
-Feed it two sets of numbers that both look reasonable and it returns **−$7,798** on one and
-**+$97,401** on the other. A $105,000 swing, from nothing but what you typed in.
+Feed it two sets of numbers that both look reasonable and it returns **−$52,269** on one and
+**+$78,973** on the other. A **$131,242 swing** — on the *same lease contract*. Only the guesses
+changed: the rate, the miles, the deadhead, the fuel, how often it breaks.
+
+Both input sets ship in `scenarios/`, so you can check that yourself:
+
+```bash
+python lease_evaluator.py --scenario scenarios/soft-market.json --all
+python lease_evaluator.py --scenario scenarios/strong-lanes.json --all
+```
 
 Its real job is to show you **which numbers decide the outcome**, so you go get the true ones:
 
