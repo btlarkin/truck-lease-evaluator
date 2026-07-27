@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="t">
+  <title id="t">Waybill Data Systems</title>
+  <desc>The Waybill mark.</desc>
+  <rect width="128" height="128" fill="#F4F1EA"/>
+  <path fill="#101418" fill-rule="nonzero" d="M8 16H24V112H8ZM8 96H56V112H8ZM40 32H56V112H40ZM40 32H88V48H40ZM72 32H88V112H72ZM72 96H120V112H72ZM104 16H120V112H104Z"/>
+</svg>

@@ -56,7 +56,6 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-import numpy as np
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 WEEKS_PER_YEAR = 52
@@ -354,6 +353,7 @@ class LeaseEvaluator:
           * Ruin is an ABSORBING state — once cash goes negative you are done,
             you do not get to recover on paper.
         """
+        import numpy as np  # deferred: --worksheet must run without it
         s = self.s
         weeks = weeks or min(WEEKS_PER_YEAR, s.lease.term_weeks)
         rng = np.random.default_rng(self.seed)
@@ -621,6 +621,8 @@ def tornado(ev: LeaseEvaluator, n_paths: int = 10_000) -> str:
     This is the most important function in the file. The verdict is manufactured
     by whatever you typed in. THIS tells you which numbers are load-bearing.
     """
+    import numpy as np  # deferred: --worksheet must run without it
+
     base = ev.s
 
     def edge(sc: Scenario) -> float:
@@ -687,6 +689,8 @@ def sweep_rate(ev: LeaseEvaluator, n_paths: int = 8_000) -> str:
 
 
 def render(ev: LeaseEvaluator, sim: SimResult) -> str:
+    import numpy as np  # deferred: --worksheet must run without it
+
     s = ev.s
     cb = ev.cost_per_mile()
     be = ev.breakeven_rate_per_mile()
@@ -772,64 +776,7 @@ def render(ev: LeaseEvaluator, sim: SimResult) -> str:
     return "\n".join(L)
 
 
-WORKSHEET = """
-================================================================================
-  DATA COLLECTION WORKSHEET
-  Take this to the dealer, the recruiter, and your own settlement statements.
-================================================================================
-
-  The model is worthless without these. Do not estimate them. Get them.
-
-  FROM THE CONTRACT (they must give you these in writing)
-  ----------------------------------------------------------------------------
-  [ ] Weekly payment                            $________
-  [ ] Term, in weeks                             ________
-  [ ] Down payment / first-and-last              $________
-  [ ] Balloon / purchase option at end           $________
-  [ ] Weekly maintenance escrow                  $________
-  [ ] Is escrow REFUNDABLE if you walk?          Y / N      <- ask twice, get it in writing
-  [ ] Early termination penalty                  $________
-  [ ] Is the payment reduced during downtime?    Y / N      <- almost always N. That is the trap.
-  [ ] Who pays for a major engine event?         ________
-  [ ] Forced dispatch, or can you refuse loads?  ________
-  [ ] What happens if you miss ONE payment?      ________
-
-  THE NUMBER THEY WILL NOT VOLUNTEER
-  ----------------------------------------------------------------------------
-  [ ] Truck's actual fair market value           $________
-      Get this from a THIRD PARTY. Look up the year/make/model/mileage on
-      TruckPaper or a dealer that is not selling you this truck. If all-in cost
-      is 75%+ over FMV, the financing is the product, not the truck.
-
-  FROM THE MARKET (not from the recruiter)
-  ----------------------------------------------------------------------------
-  [ ] Actual avg $/loaded mile in YOUR lanes     $________
-      Pull 30 days of real postings on a load board. Do not use their number.
-  [ ] Week-to-week spread on that rate           $________
-  [ ] Honest uncertainty about the MEAN          $________   <- how wrong could you be?
-  [ ] Realistic loaded miles/week                 ________
-  [ ] Realistic deadhead %                        _______%
-
-  FROM YOUR OWN LIFE (you already know these)
-  ----------------------------------------------------------------------------
-  [ ] Current W2 weekly take-home, after tax     $________   <- THE BENCHMARK
-  [ ] Cash reserve you can actually risk         $________
-  [ ] Home time weeks per year                    ________
-
-  FROM REALITY (be honest or the model lies to you)
-  ----------------------------------------------------------------------------
-  [ ] Truck mileage at signing                    ________
-  [ ] Realistic maintenance reserve $/mi         $________   <- $0.12-0.20 on a used truck
-  [ ] Odds of a breakdown in any given week       _______%
-  [ ] Typical repair bill                        $________
-  [ ] Weeks of downtime when it happens           ________
-
-  Then:  python lease_evaluator.py --dump-template > deal.json
-         (edit deal.json with the real numbers)
-         python lease_evaluator.py --scenario deal.json --all
-
-================================================================================
-"""
+from worksheet import WORKSHEET  # zero-dep module; see worksheet.py
 
 
 # ==========================================================================
